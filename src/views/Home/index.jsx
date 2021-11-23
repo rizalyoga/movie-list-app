@@ -1,6 +1,9 @@
-import React from "react";
-import Cards from "./cards.jsx";
-import { useState } from "react";
+// import React from "react";
+import Cards from "../Componenst/cards.jsx";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import allStore from "../../store/actions/index.js";
+import Banner from "../Componenst/banner.jsx";
 
 const Home = () => {
   const [listMovie] = useState([
@@ -78,9 +81,21 @@ const Home = () => {
     },
   ]);
 
+  const dispatch = useDispatch();
+  const post = useSelector(({ listPost }) => listPost);
+
+  useEffect(() => {
+    dispatch(allStore.fetchPost());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(post);
+  }, [post]);
+
   return (
     <>
-      <Cards movies={listMovie} />
+      <Banner />
+      <Cards movies={post} />
     </>
   );
 };

@@ -2,50 +2,58 @@ import React from "react";
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import logoMini from "../../assets/workflow-mark-indigo-500.svg";
+import logo from "../../assets/workflow-logo-indigo-500-mark-white-text.svg";
+import { HomeIcon } from "@heroicons/react/solid";
+import { SearchIcon } from "@heroicons/react/solid";
 
 const Navbar = () => {
-  const navigation = [{ name: "Home", href: "/", current: true }];
+  const navigation = [{ name: "Home", href: "/" }];
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 border-b-2 border-red-600">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 shadow-2xl">
+            <div className="relative flex items-center justify-between h-16 ">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-100">
                   <span className="sr-only">Open main menu</span>
                   {open ? <XIcon className="block h-6 w-6" aria-hidden="true" /> : <MenuIcon className="block h-6 w-6" aria-hidden="true" />}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img className="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
-                  <img className="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" />
+                  <img className="block lg:hidden h-8 w-auto" src={logoMini} alt="Workflow" />
+                  <img className="hidden lg:block h-8 w-auto" src={logo} alt="Workflow" />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
+                  <div className="flex align-center space-x-4">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className={classNames(item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white", "px-3 py-2 rounded-md text-sm font-medium")}
+                        //home-button
+                        className={classNames(item.current ? "bg-gray-900 text-white" : "text-white hover:bg-gray-700 hover:text-white", "px-3 py-2 rounded-md text-sm font-medium flex flex-row items-center")}
                         aria-current={item.current ? "page" : undefined}
                       >
+                        {<HomeIcon className="w-7 h-7 text-red-600 pr-1 " />}
                         {item.name}
                       </a>
                     ))}
                   </div>
                 </div>
               </div>
-              <form>
-                <input className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent rounded py-1 px-1  " />
-                <button className="bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 mx-3 rounded py-1 px-1 text-white">Search</button>
+              <form className="flex justify-center">
+                <input className="border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 border-transparent focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm  " />
+                <button>
+                  <SearchIcon className="w-6 h-6 text-red-600 mt-2 border-b-2 rounded border-gray-100" />
+                </button>
               </form>
             </div>
           </div>

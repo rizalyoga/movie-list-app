@@ -1,0 +1,13 @@
+.cards {
+  transition: 0.2s;
+}
+
+.cards:hover {
+  margin-top: -8px;
+  opacity: 0.9;
+}
+
+.cards-text:hover {
+  color: #cc0000;
+  font-weight: 600;
+}
