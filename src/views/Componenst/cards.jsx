@@ -1,17 +1,22 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import "./cards.css";
+import allStore from "../../store/actions/";
 
 const Cards = (props) => {
   let navigate = useNavigate();
 
-  useEffect(() => {
-    // console.log("did Mount");
+  // fetch Movie
+  const dispatch = useDispatch();
 
-    return () => {
-      //   console.log("did unmount!");
-    };
-  }, []);
+  // const details = useSelector(({ detail }) => detail);
+
+  const fetchDetail = (id) => {
+    dispatch(allStore.fetchDetail(id));
+  };
+
+  const toNavigate = (id) => navigate(`detailMovie/${id}`);
 
   const link = "https://image.tmdb.org/t/p/original/";
 
@@ -34,7 +39,12 @@ const Cards = (props) => {
                         aria-hidden="true"
                         className="absolute inset-0 text center shadow-lg cursor-pointer cards "
                         onClick={() => {
-                          navigate("/detailMovie");
+                          {
+                            toNavigate(movie.id);
+                          }
+                          {
+                            fetchDetail(movie.id);
+                          }
                         }}
                       />
                       {movie.original_title}

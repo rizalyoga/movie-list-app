@@ -84,13 +84,17 @@ const Home = () => {
   const dispatch = useDispatch();
   const post = useSelector(({ listPost }) => listPost);
 
-  useEffect(() => {
-    dispatch(allStore.fetchPost());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(allStore.fetchPost());
+  // }, [dispatch, post]);
 
-  useEffect(() => {
-    console.log(post);
-  }, [post]);
+  // useEffect(() => {
+  //   console.log(post);
+  // }, [post]);
+
+  // if (post.result === undefined) {
+  // return <h1>ERROR</h1>;
+  // }
 
   return (
     <>
