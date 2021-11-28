@@ -6,21 +6,24 @@ import allStore from "../../store/actions/";
 
 const DetailMovie = () => {
   const dispatch = useDispatch();
-  const posts = useSelector(({ listPost }) => listPost);
   const params = useParams();
-
-  const [detail, setDetail] = useState(null);
-
   const { id } = useParams();
+  const loading = useSelector(({ loading }) => loading);
+
   const details = useSelector(({ detail }) => detail);
 
   useEffect(() => {
-    console.log(details);
+    dispatch(allStore.fetchDetail(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    console.log("INI DETAILS DARI DETAILS", details);
   }, [details]);
-
-  // console.log(details);
-
   // =====================================================
+
+  const posts = useSelector(({ listPost }) => listPost);
+
+  const [detail, setDetail] = useState(null);
 
   useEffect(() => {
     const findDetail = posts.find((el) => el.id === +params.id);
@@ -28,18 +31,20 @@ const DetailMovie = () => {
     setDetail(findDetail);
   }, [params, posts]);
 
-  console.log("inidetaik", detail);
-
   if (!detail) {
     return <></>;
   }
-  // useEffect(() => {
-  //   dispatch(fetchDetail({ id }));
-  // }, []);
 
-  // useEffect(() => {
-  //   dispatch(allStore.fetchDetail());
-  // }, [dispatch, detail]);
+  if (loading) {
+    return (
+      <div className="bg-gray-700 flex justify-center items-center" style={{ height: "100vh" }}>
+        <h1 className="text-center text-white" style={{ margin: "auto" }}>
+          PLEASE WAIT ...
+        </h1>
+        ;
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-200 ">
@@ -56,8 +61,8 @@ const DetailMovie = () => {
               <table className="table-auto">
                 <tbody>
                   <tr>
-                    {/* <td className="border-0 border-white px-3 text-white pt-3 pb-5 title">Title</td> */}
-                    <td className="border-0 border-white px-3 text-gray-800 pt-3 pb-5 title">{detail.title} </td>
+                    <td className="row-span-2 row-start-1 row-start-2 col-span-2 col-start-1 col-end-2 border-0 border-white px-3 text-gray-800 pt-3 pb-5 title">{detail.title} </td>
+                    <td className="border-0 border-white px-3 text-white pt-3 pb-5 title"></td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Original title</td>
@@ -68,8 +73,24 @@ const DetailMovie = () => {
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{detail.release_date}</td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Duration</td>
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{}</td>
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Genre</td>
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                      {details.genres.map((el) => {
+                        return el.name + ", ";
+                      })}
+                    </td>
+                  </tr>
+                  <tr className="bg-emerald-200 text-desc ">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Production Companies</td>
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                      {details.production_companies.map((el) => {
+                        return el.name + ", ";
+                      })}
+                    </td>
+                  </tr>
+                  <tr className="bg-emerald-200 text-desc ">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Budget</td>
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{details.budget}</td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Popularity</td>
@@ -86,10 +107,6 @@ const DetailMovie = () => {
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Original Language</td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{detail.original_language}</td>
-                  </tr>
-                  <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Budget</td>
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">1.000.000</td>
                   </tr>
                 </tbody>
               </table>
