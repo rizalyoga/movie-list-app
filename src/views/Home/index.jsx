@@ -1,9 +1,10 @@
 // import React from "react";
 import Cards from "../Componenst/cards.jsx";
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import allStore from "../../store/actions/index.js";
+import allStore from "../../store/actions/index.js";
 import Banner from "../Componenst/banner.jsx";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
   // const [listMovie] = useState([
@@ -84,21 +85,37 @@ const Home = () => {
   // const dispatch = useDispatch();
   const post = useSelector(({ listPost }) => listPost);
 
-  // useEffect(() => {
-  //   dispatch(allStore.fetchPost());
-  // }, [dispatch, post]);
+  const dispatch = useDispatch();
+  let params = useParams();
 
-  // useEffect(() => {
-  //   console.log(post);
-  // }, [post]);
+  let PAGE_NUMBER = 1;
 
-  // if (post.result === undefined) {
-  // return <h1>ERROR</h1>;
-  // }
+  // const [state, setState] = useState([]);
+  let [page, setPage] = useState(PAGE_NUMBER);
+
+  const scrollToEnd = () => {
+    setPage((page += 1));
+  };
+
+  window.onscroll = function () {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      scrollToEnd();
+      document.documentElement.scrollTop = 500;
+    }
+  };
+
+  useEffect(() => {
+    console.log(params);
+  }, [params]);
+
+  useEffect(() => {
+    dispatch(allStore.fetchPost(page));
+  }, [dispatch, page]);
 
   return (
     <>
       <Banner />
+      {/* {post.length > 0 && post.map((el) => {})} */}
       <Cards movies={post} />
     </>
   );
