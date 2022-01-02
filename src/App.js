@@ -19,6 +19,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/page/:page" element={<Home />} />
         <Route path="/detailMovie/:id" element={<DetailMovie />} />
       </Routes>
     </BrowserRouter>
