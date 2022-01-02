@@ -1,10 +1,12 @@
-// import React from "react";
 import Cards from "../Componenst/cards.jsx";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions/index.js";
 import Banner from "../Componenst/banner.jsx";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ArrowSmRightIcon } from "@heroicons/react/solid";
+import { ArrowSmLeftIcon } from "@heroicons/react/solid";
 
 const Home = () => {
   // const [listMovie] = useState([
@@ -84,40 +86,84 @@ const Home = () => {
 
   // const dispatch = useDispatch();
   const post = useSelector(({ listPost }) => listPost);
+  const loading = useSelector(({ loading }) => loading);
 
   const dispatch = useDispatch();
-  let params = useParams();
+  // let params = useParams();
 
+  const navigate = useNavigate();
   let PAGE_NUMBER = 1;
 
   // const [state, setState] = useState([]);
   let [page, setPage] = useState(PAGE_NUMBER);
 
-  const scrollToEnd = () => {
-    setPage((page += 1));
-  };
+  // const scrollToEnd = () => {
+  //   setPage((page += 1));
+  // };
 
-  window.onscroll = function () {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-      scrollToEnd();
-      document.documentElement.scrollTop = 500;
-    }
-  };
-
-  useEffect(() => {
-    console.log(params);
-  }, [params]);
+  // window.onscroll = function () {
+  //   if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+  //     scrollToEnd();
+  //     console.log("fetching");
+  //     document.documentElement.scrollTop = 500;
+  //   }
+  // };
 
   useEffect(() => {
     dispatch(allStore.fetchPost(page));
+    console.log(page);
+    // setState((prev) => [...prev, ...post]);
   }, [dispatch, page]);
 
+  const Next = (e) => {
+    e.preventDefault();
+    setPage((page += 1));
+    document.documentElement.scrollTop = 500;
+    navigate(`/page/${page}`);
+  };
+
+  const Previous = (e) => {
+    e.preventDefault();
+    if (page > 1) {
+      setPage((page -= 1));
+      navigate(`/page/${page}`);
+    }
+    document.documentElement.scrollTop = 500;
+    navigate(`/`);
+  };
+
+  if (loading) {
+    console.log("loading bos");
+    return (
+      <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
+        <h1 className="text-center text-white" style={{ margin: "auto" }}>
+          PLEASE WAIT ...
+        </h1>
+        ;
+      </div>
+    );
+  }
+
+  // useEffect(() => {
+  //   console.log(params);
+  // }, [params]);
+
   return (
-    <>
+    <div className="bg-gray-200 flex items-center justify-center flex-col">
       <Banner />
       {/* {post.length > 0 && post.map((el) => {})} */}
       <Cards movies={post} />
-    </>
+      <div className="flex">
+        <button className="inline-flex items-center justify-center px-5 py-3  text-base font-medium rounded-md text-black" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => Previous(e)}>
+          <ArrowSmLeftIcon className="w-7 h-7 text-gray-600 pr-1" />
+          Previous
+        </button>
+        <button className="inline-flex items-center justify-center px-5 py-3  text-base font-medium rounded-md text-black" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => Next(e)}>
+          Next
+          <ArrowSmRightIcon className="w-7 h-7 text-gray-600 pr-1" />
+        </button>
+      </div>
+    </div>
   );
 };
 
