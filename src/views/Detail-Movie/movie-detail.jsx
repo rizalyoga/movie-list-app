@@ -31,6 +31,14 @@ const DetailMovie = () => {
     setDetail(findDetail);
   }, [params, posts]);
 
+  const fotmatUSD = (money) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+    }).format(money);
+  };
+
   if (!detail) {
     return <></>;
   }
@@ -90,7 +98,7 @@ const DetailMovie = () => {
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Budget</td>
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{details.budget}</td>
+                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">{fotmatUSD(details.budget)}</td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Popularity</td>
