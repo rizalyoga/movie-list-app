@@ -12,7 +12,7 @@ const Cards = (props) => {
   const link = "https://image.tmdb.org/t/p/original/";
 
   if (loading) {
-    console.log("loading bos CARD");
+    // console.log("loading bos CARD");
     return (
       <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
         <h1 className="text-center text-white" style={{ margin: "auto" }}>

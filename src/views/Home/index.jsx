@@ -133,7 +133,7 @@ const Home = () => {
   };
 
   if (loading) {
-    console.log("loading bos");
+    // console.log("loading bos");
     return (
       <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
         <h1 className="text-center text-white" style={{ margin: "auto" }}>
@@ -152,7 +152,7 @@ const Home = () => {
     <div className="bg-gray-200 flex items-center justify-center flex-col">
       <Banner />
       {/* {post.length > 0 && post.map((el) => {})} */}
-      <Cards movies={post} />
+      <Cards movies={post} page={page} />
       <div className="flex">
         <button className="inline-flex items-center justify-center px-5 py-3  text-base font-medium rounded-md text-black" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => Previous(e)}>
           <ArrowSmLeftIcon className="w-7 h-7 text-gray-600 pr-1" />
