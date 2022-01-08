@@ -5,7 +5,7 @@ export const fetchDetail = (payload) => {
   return (dispacth) => {
     dispacth(allStore.setLoading(true));
     axios
-      .get(`https://api.themoviedb.org/3/movie/${payload}?api_key=519d809c83b6f9bbf372a2ed5633376d&language=en-US`)
+      .get(`https://api.themoviedb.org/3/movie/${payload}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
       .then(({ data }) => {
         dispacth(setDetails(data));
       })

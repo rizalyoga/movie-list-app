@@ -5,7 +5,7 @@ export const fetchPost = (page) => {
   return (dispacth) => {
     dispacth(allStore.setLoading(true));
     axios
-      .get(`https://api.themoviedb.org/3/movie/now_playing?api_key=519d809c83b6f9bbf372a2ed5633376d&language=en-US&page=${page}`)
+      .get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
       .then(({ data }) => {
         // console.log(data);
         dispacth(setPost(data.results));
