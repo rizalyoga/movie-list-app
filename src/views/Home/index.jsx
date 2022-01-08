@@ -118,7 +118,7 @@ const Home = () => {
   const Next = (e) => {
     e.preventDefault();
     setPage((page += 1));
-    document.documentElement.scrollTop = 500;
+    // document.documentElement.scrollTop = 500;
     navigate(`/page/${page}`);
   };
 
@@ -128,19 +128,21 @@ const Home = () => {
       setPage((page -= 1));
       navigate(`/page/${page}`);
     }
-    document.documentElement.scrollTop = 500;
+    // document.documentElement.scrollTop = 500;
     navigate(`/`);
   };
 
   if (loading) {
     // console.log("loading bos");
     return (
-      <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
-        <h1 className="text-center text-white" style={{ margin: "auto" }}>
-          PLEASE WAIT ...
-        </h1>
-        ;
-      </div>
+      <>
+        <Banner />
+        <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
+          <h1 className="text-center text-white" style={{ margin: "auto" }}>
+            PLEASE WAIT ...
+          </h1>
+        </div>
+      </>
     );
   }
 

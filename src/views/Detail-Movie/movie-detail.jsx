@@ -101,17 +101,25 @@ const DetailMovie = () => {
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Genre</td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
-                      {details.genres.map((el) => {
-                        return el.name + ", ";
-                      })}
+                      {details.genres ? (
+                        details.genres.map((el) => {
+                          return el.name + ", ";
+                        })
+                      ) : (
+                        <div>Wait...</div>
+                      )}
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">Production Companies</td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
-                      {details.production_companies.map((el) => {
-                        return el.name + ", ";
-                      })}
+                      {details.production_companies ? (
+                        details.production_companies.map((el) => {
+                          return el.name + ", ";
+                        })
+                      ) : (
+                        <div>Wait...</div>
+                      )}
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">

@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import "./cards.css";
 // import allStore from "../../store/actions/index.jsx"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import allStore from "../../store/actions/index";
 
 const Cards = (props) => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const loading = useSelector(({ loading }) => loading);
 
   const toNavigate = (id) => navigate(`/detailMovie/${id}`);
+
+  const dispatchDetail = (id) => dispatch(allStore.fetchDetail(id));
 
   const link = "https://image.tmdb.org/t/p/original/";
 
@@ -32,7 +36,7 @@ const Cards = (props) => {
             props.movies.map((movie, index) => (
               <div key={index} className="group relative cards ">
                 <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden  y-900 lg:h-75 lg:aspect-none">
-                  <img src={link.concat(movie.poster_path)} alt="poster-movie" className=" w-full h-full object-center object-cover lg:w-full lg:h-full " />
+                  {loading ? "Please wait..." : <img src={link.concat(movie.poster_path)} alt="poster-movie" className=" w-full h-full object-center object-cover lg:w-full lg:h-full " />}
                 </div>
                 <div className="mt-4 flex justify-center ">
                   <div>
@@ -43,6 +47,7 @@ const Cards = (props) => {
                           className="absolute inset-0 text center shadow-lg cursor-pointer cards hover:transition hover:duration-300 hover:ease-in-out"
                           onClick={() => {
                             toNavigate(movie.id);
+                            dispatchDetail(movie.id);
                           }}
                         />
                         {movie.original_title}
