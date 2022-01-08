@@ -62,15 +62,15 @@ const DetailMovie = () => {
     );
   }
 
-  if (!detail) {
-    return (
-      <div className="bg-gray-700 flex justify-center items-center" style={{ height: "100vh" }}>
-        <h1 className="text-center text-white" style={{ margin: "auto" }}>
-          PLEASE RELOAD ...
-        </h1>
-      </div>
-    );
-  }
+  // if (!detail) {
+  //   return (
+  //     <div className="bg-gray-700 flex justify-center items-center" style={{ height: "100vh" }}>
+  //       <h1 className="text-center text-white" style={{ margin: "auto" }}>
+  //         PLEASE RELOAD ...
+  //       </h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="bg-gray-200 ">
