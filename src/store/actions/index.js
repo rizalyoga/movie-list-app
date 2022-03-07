@@ -3,6 +3,7 @@ import { fetchDetail, setDetails } from "./fetchDetails";
 import setLoading from "./setLoading.js";
 import { fetchSimilar, setSimilar } from "./fetchSimilar";
 import { fetchTrending, setTrending } from "./fetchTrending";
+import { fetchSearch, setSearch } from "./fetchSearch";
 
 const allStore = {
   fetchPost,
@@ -14,6 +15,8 @@ const allStore = {
   setSimilar,
   fetchTrending,
   setTrending,
+  fetchSearch,
+  setSearch,
 };
 
 export default allStore;
