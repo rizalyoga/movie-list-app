@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./cards.css";
 // import allStore from "../../store/actions/index.jsx"
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import allStore from "../../store/actions/index";
 
 const Cards = (props) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const loading = useSelector(({ loading }) => loading);
 
   const toNavigate = (id) => navigate(`/detailMovie/${id}`);
 
@@ -15,20 +14,8 @@ const Cards = (props) => {
 
   const link = "https://image.tmdb.org/t/p/original/";
 
-  if (loading) {
-    // console.log("loading bos CARD");
-    return (
-      <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
-        <h1 className="text-center text-white" style={{ margin: "auto" }}>
-          PLEASE WAIT ...
-        </h1>
-        ;
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-gray-200 ">
+    <div>
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         {/* <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 text-center pb-6">LIST MOVIES</h2> */}
         <div className=" card mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8  ">
@@ -36,7 +23,7 @@ const Cards = (props) => {
             props.movies.map((movie, index) => (
               <div key={index} className="group relative cards ">
                 <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden  y-900 lg:h-75 lg:aspect-none">
-                  {loading ? "Please wait..." : <img src={link.concat(movie.poster_path)} alt="poster-movie" className=" w-full h-full object-center object-cover lg:w-full lg:h-full " />}
+                  {movie.poster_path ? <img src={link.concat(movie.poster_path)} alt="poster-movie" className=" w-full h-full object-center object-cover lg:w-full lg:h-full min-h-80 " /> : <div className="bg-gray-800 min-h-80"></div>}
                 </div>
                 <div className="mt-4 flex justify-center ">
                   <div>

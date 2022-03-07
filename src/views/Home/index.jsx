@@ -3,10 +3,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions/index.js";
 import Banner from "../Componenst/banner.jsx";
-// import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { ArrowSmRightIcon } from "@heroicons/react/solid";
-import { ArrowSmLeftIcon } from "@heroicons/react/solid";
+// import Loader from "../Componenst/Loader/loader.jsx";
+import CardTrending from "../Componenst/card-carousel/card-carousel.jsx";
 
 const Home = () => {
   // const [listMovie] = useState([
@@ -86,83 +84,57 @@ const Home = () => {
 
   // const dispatch = useDispatch();
   const post = useSelector(({ listPost }) => listPost);
-  const loading = useSelector(({ loading }) => loading);
+
+  const trending = useSelector(({ trendingMovie }) => trendingMovie);
+  // const loading = useSelector(({ loading }) => loading);
 
   const dispatch = useDispatch();
-  // let params = useParams();
 
-  const navigate = useNavigate();
-  let PAGE_NUMBER = 1;
+  let PAGE_NUMBER = 2;
 
-  // const [state, setState] = useState([]);
+  const [posts, setPosts] = useState(post);
   let [page, setPage] = useState(PAGE_NUMBER);
 
-  // const scrollToEnd = () => {
-  //   setPage((page += 1));
-  // };
-
-  // window.onscroll = function () {
-  //   if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-  //     scrollToEnd();
-  //     console.log("fetching");
-  //     document.documentElement.scrollTop = 500;
-  //   }
-  // };
-
+  /* ------------------------------- FETCH POST ------------------------------- */
   useEffect(() => {
     dispatch(allStore.fetchPost(page));
-    console.log(page);
-    // setState((prev) => [...prev, ...post]);
   }, [dispatch, page]);
 
-  const Next = (e) => {
+  useEffect(() => {
+    if (posts.length === 0) {
+      setPosts(post);
+    }
+  }, [post, posts.length]);
+
+  const loadMore = (e) => {
     e.preventDefault();
     setPage((page += 1));
-    // document.documentElement.scrollTop = 500;
-    navigate(`/page/${page}`);
+    dispatch(allStore.fetchPost(page));
+    setPosts(() => [...posts, ...post]);
   };
 
-  const Previous = (e) => {
-    e.preventDefault();
-    if (page > 1) {
-      setPage((page -= 1));
-      navigate(`/page/${page}`);
-    }
-    // document.documentElement.scrollTop = 500;
-    navigate(`/`);
-  };
-
-  if (loading) {
-    // console.log("loading bos");
-    return (
-      <>
-        <Banner />
-        <div className="bg-white flex justify-center items-center" style={{ height: "100vh" }}>
-          <h1 className="text-center text-white" style={{ margin: "auto" }}>
-            PLEASE WAIT ...
-          </h1>
-        </div>
-      </>
-    );
-  }
-
-  // useEffect(() => {
-  //   console.log(params);
-  // }, [params]);
+  useEffect(() => {
+    dispatch(allStore.fetchTrending());
+  }, [dispatch]);
 
   return (
     <div className="bg-gray-200 flex items-center justify-center flex-col">
       <Banner />
       {/* {post.length > 0 && post.map((el) => {})} */}
-      <Cards movies={post} page={page} />
+      <div className="w-10/12">
+        <CardTrending trending={trending} />
+      </div>
+      <div className="container ml-8 md:ml-20 xl:ml-14" style={{ zIndex: "20" }}>
+        <div className="title-list w-full">
+          <h1 style={{ marginTop: "5rem", marginBottom: "-6rem", fontSize: "1.8rem", textAlign: "left" }} className="font-bold">
+            Now Playing Movie
+          </h1>
+        </div>
+      </div>
+      <Cards movies={posts} page={page} />
       <div className="flex">
-        <button className="inline-flex items-center justify-center px-5 py-3  text-base font-medium rounded-md text-black" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => Previous(e)}>
-          <ArrowSmLeftIcon className="w-7 h-7 text-gray-600 pr-1" />
-          Previous
-        </button>
-        <button className="inline-flex items-center justify-center px-5 py-3  text-base font-medium rounded-md text-black" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => Next(e)}>
-          Next
-          <ArrowSmRightIcon className="w-7 h-7 text-gray-600 pr-1" />
+        <button className="inline-flex items-center justify-center text-base font-medium py-3 px-4 rounded text-white bg-gray-800" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => loadMore(e)}>
+          Load More
         </button>
       </div>
     </div>

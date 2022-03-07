@@ -67,6 +67,10 @@
   .text-desc {
     font-size: 0.8rem;
   }
+
+  .card-similar-movie {
+    margin-top: 6%;
+  }
 }
 
 @media only screen and (max-width: 425px) {
