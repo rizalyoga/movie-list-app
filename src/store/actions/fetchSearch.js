@@ -9,7 +9,6 @@ export const fetchSearch = (title) => {
       .then(({ data }) => {
         // console.log(data);
         dispacth(setSearch(data.results));
-        window.location.href = `search/${title}`;
       })
       .catch((err) => {
         console.log(err);

@@ -7,6 +7,7 @@ import logoMini from "../../assets/icon-logo.png";
 import logo from "../../assets/logo-banner.png";
 import { HomeIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/solid";
+import { useNavigate } from "react-router-dom";
 import allStore from "../../store/actions/index";
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [term, setTerm] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -23,6 +25,11 @@ const Navbar = () => {
     e.preventDefault();
     // console.log(term);
     dispatch(allStore.fetchSearch(term));
+    if (term.length !== 0) {
+      navigate(`/search/${term}`);
+    } else {
+      navigate(`/`);
+    }
   };
 
   return (
