@@ -7,7 +7,6 @@ export const fetchTrending = () => {
     axios
       .get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=1`)
       .then(({ data }) => {
-        console.log("trending : ", data);
         dispacth(setTrending(data.results));
       })
       .catch((err) => {

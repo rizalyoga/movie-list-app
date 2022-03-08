@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./detail-movie.css";
 import { useParams } from "react-router-dom";
@@ -7,7 +7,6 @@ import CardSimilar from "../Componenst/cards.jsx";
 
 const DetailMovie = () => {
   const dispatch = useDispatch();
-  const params = useParams();
   const { id } = useParams();
   const loading = useSelector(({ loading }) => loading);
 
@@ -17,10 +16,6 @@ const DetailMovie = () => {
   useEffect(() => {
     dispatch(allStore.fetchDetail(id));
   }, [dispatch, id]);
-
-  useEffect(() => {
-    console.log("INI DETAILS DARI DETAILS", details);
-  }, [details]);
 
   /* ------------------------------ SIMILAR MOVIE ----------------------------- */
   // let page = 1;
@@ -34,15 +29,15 @@ const DetailMovie = () => {
   // }, [similar]);
   //=================================================================================
 
-  const posts = useSelector(({ listPost }) => listPost);
+  // const posts = useSelector(({ listPost }) => listPost);
 
-  const [detail, setDetail] = useState(null);
+  // const [detail, setDetail] = useState(null);
 
-  useEffect(() => {
-    const findDetail = posts.find((el) => el.id === +params.id);
-    // console.log(findDetail);
-    setDetail(findDetail);
-  }, [params, posts]);
+  // useEffect(() => {
+  //   const findDetail = posts.find((el) => el.id === +params.id);
+  //   console.log(findDetail);
+  //   setDetail(findDetail);
+  // }, [params, posts]);
 
   const fotmatUSD = (money) => {
     return new Intl.NumberFormat("en-US", {

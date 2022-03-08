@@ -15,8 +15,8 @@ const CardTrending = ({ trending }) => {
   const dispatchDetail = (id) => dispatch(allStore.fetchDetail(id));
 
   const settings = {
-    className: "center",
-    centerMode: true,
+    // className: "center",
+    // centerMode: true,
     infinite: true,
     centerPadding: "60px",
     slidesToShow: 5,
