@@ -33,7 +33,7 @@ const Navbar = () => {
   };
 
   return (
-    <Disclosure as="nav" className="bg-gray-800 border-b-2 border-red-600">
+    <Disclosure as="nav" className="bg-gray-800 border-b-2 border-red-600" style={{ position: "fixed", top: "0", zIndex: "100", width: "100%" }}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 shadow-2xl">
@@ -70,7 +70,7 @@ const Navbar = () => {
               <form className="flex justify-center" onSubmit={handleSubmit}>
                 <input
                   type="search"
-                  className="border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 border-transparent focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm "
+                  className="text-center border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 border-transparent focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm "
                   onChange={(e) => setTerm(e.target.value)}
                 />
                 <button type="submit">

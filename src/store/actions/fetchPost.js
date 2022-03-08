@@ -7,7 +7,6 @@ export const fetchPost = (page) => {
     axios
       .get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
       .then(({ data }) => {
-        // console.log(data);
         dispacth(setPost(data.results));
       })
       .catch((err) => {

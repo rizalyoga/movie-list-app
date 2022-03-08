@@ -4,11 +4,11 @@ import allStore from "./index.js";
 export const fetchSimilar = (id, page) => {
   return (dispacth) => {
     dispacth(allStore.setLoading(true));
-    console.log(id);
+    // console.log(id);
     axios
       .get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=1`)
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispacth(setSimilar(data.results));
       })
       .catch((err) => {
