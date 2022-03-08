@@ -1,5 +1,6 @@
 import "./banner.css";
-import logo from "../../assets/workflow-logo-indigo-500-mark-white-text.svg";
+// import logo from "../../assets/workflow-logo-indigo-500-mark-white-text.svg";
+import logo from "../../assets/logo-banner.png";
 
 const Banner = () => {
   return (
