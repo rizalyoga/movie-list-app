@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import logoMini from "../../assets/workflow-mark-indigo-500.svg";
-import logo from "../../assets/workflow-logo-indigo-500-mark-white-text.svg";
+import logoMini from "../../assets/icon-logo.png";
+import logo from "../../assets/logo-banner.png";
 import { HomeIcon } from "@heroicons/react/solid";
 import { SearchIcon } from "@heroicons/react/solid";
+import allStore from "../../store/actions/index";
 
 const Navbar = () => {
   const navigation = [{ name: "Home", href: "/" }];
+  const [term, setTerm] = useState("");
+
+  const dispatch = useDispatch();
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(term);
+    dispatch(allStore.fetchSearch(term));
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800 border-b-2 border-red-600">
@@ -49,9 +60,13 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <form className="flex justify-center">
-                <input className="border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 border-transparent focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm  " />
-                <button>
+              <form className="flex justify-center" onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  className="border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 border-transparent focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm "
+                  onChange={(e) => setTerm(e.target.value)}
+                />
+                <button type="submit">
                   <SearchIcon className="w-6 h-6 text-red-600 mt-2 border-b-2 rounded border-gray-100" />
                 </button>
               </form>

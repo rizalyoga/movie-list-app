@@ -124,13 +124,7 @@ const Home = () => {
       <div className="w-10/12">
         <CardTrending trending={trending} />
       </div>
-      <div className="container ml-8 md:ml-20 xl:ml-14" style={{ zIndex: "20" }}>
-        <div className="title-list w-full">
-          <h1 style={{ marginTop: "5rem", marginBottom: "-6rem", fontSize: "1.8rem", textAlign: "left" }} className="font-bold">
-            Now Playing Movie
-          </h1>
-        </div>
-      </div>
+      <div className="container ml-8 md:ml-20 xl:ml-14" style={{ zIndex: "20" }}></div>
       <Cards movies={posts} page={page} />
       <div className="flex">
         <button className="inline-flex items-center justify-center text-base font-medium py-3 px-4 rounded text-white bg-gray-800" id="more" style={{ marginTop: "-50px", marginBottom: "30px" }} onClick={(e) => loadMore(e)}>

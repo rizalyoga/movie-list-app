@@ -16,9 +16,10 @@
 }
 
 .banner img {
-  margin-top: -10%;
+  margin-top: -5%;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 20px;
   width: 70%;
 }
 
@@ -45,5 +46,11 @@
   24%,
   55% {
     text-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner img {
+    width: 95%;
   }
 }
