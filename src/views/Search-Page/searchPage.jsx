@@ -17,7 +17,7 @@ const SearchPage = () => {
         </div>
       ) : (
         <>
-          <h1 className="text-gray-800 text-center" style={{ marginBottom: "-3rem", paddingTop: "3rem", fontSize: "1.5rem" }}>
+          <h1 className="text-gray-800 text-center pt-24" style={{ marginBottom: "-3rem", fontSize: "1.5rem" }}>
             Result of " {title} "
           </h1>
           <Cards movies={movie} />
