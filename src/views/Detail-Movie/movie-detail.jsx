@@ -4,6 +4,7 @@ import "./detail-movie.css";
 import { useParams } from "react-router-dom";
 import allStore from "../../store/actions/";
 import CardSimilar from "../Componenst/cards.jsx";
+import TopButton from "../Componenst/top-button/topButon.jsx";
 
 const DetailMovie = () => {
   const dispatch = useDispatch();
@@ -151,6 +152,7 @@ const DetailMovie = () => {
             Similar Movie
           </h1>
         </div>
+        <TopButton />
         <div className="card-similar-movie">
           <CardSimilar movies={similar} />
         </div>
