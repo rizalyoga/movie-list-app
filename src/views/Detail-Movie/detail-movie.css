@@ -73,7 +73,11 @@
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 428px) {
+  .cover-movie img {
+    padding-top: 2rem;
+  }
+
   .details {
     flex-basis: 100%;
   }

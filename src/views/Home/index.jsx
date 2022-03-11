@@ -8,6 +8,8 @@ import CardTrending from "../Componenst/card-carousel/card-carousel.jsx";
 // import InfinitesSroll from "react-infinite-scroll-component";
 import useOnScreen from "../Script/useOnScreen";
 // import useIntersection from "../Script/useIntersection";
+import TopButton from "../Componenst/top-button/topButon.jsx";
+
 
 const Home = () => {
   const post = useSelector(({ listPost }) => listPost);
@@ -64,11 +66,11 @@ const Home = () => {
       <div className="w-10/12">
         <CardTrending trending={trending} />
       </div>
+      <TopButton />
       <div className="container ml-8 md:ml-20 xl:ml-14" style={{ zIndex: "20" }}></div>
       {/* <InfinitesSroll dataLength={post.length + post.length} next={loadMore} hasMore={true} loader={<h4>Loading...</h4>}> */}
       <Cards movies={posts} page={page} />
       {/* </InfinitesSroll> */}
-
       <div className="flex">
         <button
           ref={ref}
