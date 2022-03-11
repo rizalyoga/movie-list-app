@@ -10,6 +10,7 @@ import useOnScreen from "../Script/useOnScreen";
 // import useIntersection from "../Script/useIntersection";
 import TopButton from "../Componenst/top-button/topButon.jsx";
 
+
 const Home = () => {
   const post = useSelector(({ listPost }) => listPost);
   const trending = useSelector(({ trendingMovie }) => trendingMovie);
