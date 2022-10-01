@@ -4,13 +4,14 @@
 
 # Movie List App
 
-<img src="src/assets/logo-banner.png" alt="Logo" width="250" height="auto" />
+<img src="src/assets/logo-banner.png" width=800 height=150 alt="Logo" width="250" height="auto" />
 
 </div>
 
 <!-- ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/feliciakri/cofficed) -->
 <!-- ![Vercel](https://vercelbadge.vercel.app/api/feliciakri/cofficed) -->
 <!-- ![Website](https://img.shields.io/website?url=https%3A%2F%2Fcofficed.tech) -->
+<!-- 🖼️🎥  -->
 
 > Movieku is a website that contains information about movies that are currently showing and what movies are trending right now.
 
@@ -18,10 +19,14 @@
 
 Here is a working live demo : [Demo](https://movieku-rizalyoga.web.app/)
 
+## 🎥 Video Demo
+
 ## 🔮 Features
 
 - see all the list of trending movies.
 - see details of the film (title, film director, score, etc.).
+- search movie by movie title.
+- infinite scroll.
 
 ## 🧰 Run in locale
 
@@ -58,6 +63,7 @@ That contains the endpoint for the backend -->
 - [Axios](https://github.com/axios/axios)
 - [React Redux](https://react-redux.js.org/)
 - [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
+- [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## 👤 Authors
 
