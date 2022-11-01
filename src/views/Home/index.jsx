@@ -1,21 +1,20 @@
-import Cards from "../Componenst/cards.jsx";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions/index.js";
 import Banner from "../Componenst/banner.jsx";
-// import Loader from "../Componenst/Loader/loader.jsx";
-import CardTrending from "../Componenst/card-carousel/card-carousel.jsx";
-// import InfinitesSroll from "react-infinite-scroll-component";
+import Loader from "../Componenst/Loader/loader";
 import useOnScreen from "../Script/useOnScreen";
-// import useIntersection from "../Script/useIntersection";
 import TopButton from "../Componenst/top-button/topButon.jsx";
 
+// import CardTrending from "../Componenst/card-carousel/card-carousel.jsx";
+const CardTrending = React.lazy(() =>
+  import("../Componenst/card-carousel/card-carousel.jsx")
+);
+const Cards = React.lazy(() => import("../Componenst/cards.jsx"));
 
 const Home = () => {
   const post = useSelector(({ listPost }) => listPost);
   const trending = useSelector(({ trendingMovie }) => trendingMovie);
-
-  // const loading = useSelector(({ loading }) => loading);
 
   const ref = useRef();
   const isVisible = useOnScreen(ref);
@@ -64,20 +63,28 @@ const Home = () => {
       <Banner />
       {/* {post.length > 0 && post.map((el) => {})} */}
       <div className="w-10/12">
-        <CardTrending trending={trending} />
+        <Suspense fallback={<Loader />}>
+          <CardTrending trending={trending} />
+        </Suspense>
       </div>
       <TopButton />
-      <div className="container ml-8 md:ml-20 xl:ml-14" style={{ zIndex: "20" }}></div>
+      <div
+        className="container ml-8 md:ml-20 xl:ml-14"
+        style={{ zIndex: "20" }}
+      ></div>
+
       {/* <InfinitesSroll dataLength={post.length + post.length} next={loadMore} hasMore={true} loader={<h4>Loading...</h4>}> */}
-      <Cards movies={posts} page={page} />
+      <Suspense fallback={<Loader />}>
+        <Cards movies={posts} page={page} />
+      </Suspense>
+
       {/* </InfinitesSroll> */}
       <div className="flex">
         <button
           ref={ref}
-          style={{ display: "none" }}
+          style={{ display: "none", marginTop: "-50px", marginBottom: "30px" }}
           className="inline-flex items-center justify-center text-base font-medium py-3 px-4 rounded text-white bg-gray-800"
           id="more"
-          style={{ marginTop: "-50px", marginBottom: "30px" }}
           onClick={(e) => loadMore(e)}
         >
           Please Wait...

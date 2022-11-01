@@ -4,7 +4,6 @@ import "./top-button.css";
 
 const TopButon = () => {
   const [show, setShow] = useState("hide-btn");
-  console.log(show);
 
   const toTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -12,7 +11,10 @@ const TopButon = () => {
 
   useEffect(() => {
     const hideButton = () => {
-      if (document.body.scroll > 100 || document.documentElement.scrollTop > 100) {
+      if (
+        document.body.scroll > 100 ||
+        document.documentElement.scrollTop > 100
+      ) {
         return setShow("show-btn");
       } else {
         return setShow("hide-btn");
@@ -24,7 +26,14 @@ const TopButon = () => {
 
   return (
     <div className="container-btn">
-      <img className={show} style={{ cursor: "pointer" }} id="button-up" src={buttonTop} alt="top-button" onClick={toTop} />
+      <img
+        className={show}
+        style={{ cursor: "pointer" }}
+        id="button-up"
+        src={buttonTop}
+        alt="top-button"
+        onClick={toTop}
+      />
     </div>
   );
 };
