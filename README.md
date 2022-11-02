@@ -21,6 +21,8 @@ Here is a working live demo : [Demo](https://movieku-rizalyoga.web.app/)
 
 ## 🎥 Video Demo
 
+https://user-images.githubusercontent.com/28485636/193496379-265e5b88-c945-4cd6-962f-c8b152125d18.mp4
+
 ## 🔮 Features
 
 - see all the list of trending movies.
