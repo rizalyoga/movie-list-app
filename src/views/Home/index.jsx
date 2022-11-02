@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions/index.js";
 import Banner from "../Componenst/banner.jsx";
-import Loader from "../Componenst/Loader/loader";
 import useOnScreen from "../Script/useOnScreen";
 import TopButton from "../Componenst/top-button/topButon.jsx";
 
@@ -10,6 +9,7 @@ import TopButton from "../Componenst/top-button/topButon.jsx";
 const CardTrending = React.lazy(() =>
   import("../Componenst/card-carousel/card-carousel.jsx")
 );
+
 const Cards = React.lazy(() => import("../Componenst/cards.jsx"));
 
 const Home = () => {
@@ -63,7 +63,7 @@ const Home = () => {
       <Banner />
       {/* {post.length > 0 && post.map((el) => {})} */}
       <div className="w-10/12">
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<div>Loading...</div>}>
           <CardTrending trending={trending} />
         </Suspense>
       </div>
@@ -74,7 +74,7 @@ const Home = () => {
       ></div>
 
       {/* <InfinitesSroll dataLength={post.length + post.length} next={loadMore} hasMore={true} loader={<h4>Loading...</h4>}> */}
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<div>Loading...</div>}>
         <Cards movies={posts} page={page} />
       </Suspense>
 
@@ -82,7 +82,7 @@ const Home = () => {
       <div className="flex">
         <button
           ref={ref}
-          style={{ display: "none", marginTop: "-50px", marginBottom: "30px" }}
+          style={{ marginTop: "-50px", marginBottom: "30px" }}
           className="inline-flex items-center justify-center text-base font-medium py-3 px-4 rounded text-white bg-gray-800"
           id="more"
           onClick={(e) => loadMore(e)}
