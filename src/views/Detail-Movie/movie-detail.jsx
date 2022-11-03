@@ -76,7 +76,7 @@ const DetailMovie = () => {
                     <td className="border-0 border-white px-3 text-white pt-3 pb-5 title"></td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Original title
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -84,15 +84,15 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
-                      Release{" "}
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
+                      Release
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
                       {details.release_date}
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Genre
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -106,7 +106,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Production Companies
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -120,7 +120,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Budget
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -128,7 +128,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Popularity
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -136,7 +136,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Vote Average
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -144,7 +144,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Vote Count
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
@@ -152,7 +152,7 @@ const DetailMovie = () => {
                     </td>
                   </tr>
                   <tr className="bg-emerald-200 text-desc ">
-                    <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
+                    <td className="border-0 border-b-2 border-gray-100 px-3 font-bold text-gray-800 pt-3 pb-3">
                       Original Language
                     </td>
                     <td className="border-0 border-b-2 border-gray-100 px-3 text-gray-800 pt-3 pb-3">
