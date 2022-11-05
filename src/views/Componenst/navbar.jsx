@@ -91,9 +91,9 @@ const Navbar = () => {
               <form className="flex justify-center" onSubmit={handleSubmit}>
                 <input
                   type="search"
-                  className="text-center border-0 rounded border-b-2 bg-gray-800 border-gray-100 border-transparent focus:outline-none focus:border-gray-100 focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm "
+                  placeholder="Search movie... "
+                  className="text-center border-0 rounded border-b-2 bg-gray-800  border-gray-100 border-transparent focus:outline-none focus:border-gray-100 focus:ring-red-600 focus:border-transparent text-gray-100 py-1 text-sm"
                   onChange={(e) => setTerm(e.target.value)}
-                  placeholder="movie title"
                 />
                 <button aria-label="search-movie" type="submit">
                   <SearchIcon className="w-6 h-6 text-red-600 mt-2 border-b-2 rounded border-gray-100" />
