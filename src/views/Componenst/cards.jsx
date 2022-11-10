@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import "./cards.css";
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 import { useDispatch } from "react-redux";
 import allStore from "../../store/actions/index";
+
+import LogoBanner from "../../assets/logo-banner.png";
+import "./cards.css";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Cards = (props) => {
   let navigate = useNavigate();
@@ -29,7 +31,7 @@ const Cards = (props) => {
                       src={link.concat(movie.poster_path)}
                       alt="poster-movie"
                       effect="blur"
-                      placeholderSrc={link.concat(movie.poster_path)}
+                      placeholderSrc={LogoBanner}
                     />
                   )}
                 </div>

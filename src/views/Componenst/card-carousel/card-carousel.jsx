@@ -1,10 +1,15 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import allStore from "../../../store/actions/index";
 import "./card-carousel.css";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import LogoBanner from "../../../assets/logo-banner.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const CardTrending = ({ trending }) => {
   let navigate = useNavigate();
@@ -57,16 +62,27 @@ const CardTrending = ({ trending }) => {
   const link = "https://image.tmdb.org/t/p/original/";
   return (
     <div className="container">
-      <h2 style={{ marginTop: "6rem", marginBottom: "-4rem", fontSize: "1.8rem", textAlign: "left", zIndex: "20" }} className="font-bold">
+      <h2
+        style={{
+          marginTop: "6rem",
+          marginBottom: "-4rem",
+          fontSize: "1.8rem",
+          textAlign: "left",
+          zIndex: "20",
+        }}
+        className="font-bold"
+      >
         Trending Movie
       </h2>
       <Slider {...settings} style={{ marginTop: "5rem", cursor: "pointer" }}>
         {trending.map((movie) => (
           <div key={movie.id} className="poster">
-            <img
+            <LazyLoadImage
               src={link.concat(movie.poster_path)}
               className="cards w-full h-full  bg-gray-800"
-              alt="Tailwind CSS Carousel component"
+              alt="poster-movie"
+              effect="blur"
+              placeholderSrc={link.concat(movie.poster_path)}
               onClick={() => {
                 toNavigate(movie.id);
                 dispatchDetail(movie.id);
@@ -75,7 +91,16 @@ const CardTrending = ({ trending }) => {
           </div>
         ))}
       </Slider>
-      <h2 style={{ marginTop: "4rem", marginBottom: "-4rem", fontSize: "1.8rem", textAlign: "left", zIndex: "20" }} className="font-bold">
+      <h2
+        style={{
+          marginTop: "4rem",
+          marginBottom: "-4rem",
+          fontSize: "1.8rem",
+          textAlign: "left",
+          zIndex: "20",
+        }}
+        className="font-bold"
+      >
         Now Playing
       </h2>
     </div>
