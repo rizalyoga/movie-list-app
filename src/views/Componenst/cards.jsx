@@ -11,29 +11,25 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 const Cards = (props) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const link = "https://image.tmdb.org/t/p/original/";
 
   const toNavigate = (id) => navigate(`/detailMovie/${id}`);
-
   const dispatchDetail = (id) => dispatch(allStore.fetchDetail(id));
-
-  const link = "https://image.tmdb.org/t/p/original/";
 
   return (
     <div>
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className=" card mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8  ">
-          {props.movies.length > 0 &&
-            props.movies.map((movie) => (
-              <div key={movie.original_title} className="group relative cards ">
-                <div className="w-full min-h-80 bg-gray-800 aspect-w-1 aspect-h-1 rounded-md overflow-hidden  y-900 lg:h-75 lg:aspect-none">
-                  {movie.poster_path && (
-                    <LazyLoadImage
-                      src={link.concat(movie.poster_path)}
-                      alt="poster-movie"
-                      effect="blur"
-                      placeholderSrc={LogoBanner}
-                    />
-                  )}
+          {props.movies.length &&
+            props.movies.map((movie, index) => (
+              <div key={index} className="group relative cards ">
+                <div className="w-full min-h-50 bg-gray-800 aspect-w-1 aspect-h-1 rounded-md overflow-hidden  y-900 lg:h-64 lg:aspect-none">
+                  <LazyLoadImage
+                    src={link.concat(movie.poster_path)}
+                    alt="poster-movie"
+                    effect="blur"
+                    placeholderSrc={LogoBanner}
+                  />
                 </div>
                 <div className="mt-4 flex justify-center ">
                   <div className="truncate ...">

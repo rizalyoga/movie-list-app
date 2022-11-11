@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import LogoBanner from "../../../assets/logo-banner.png";
+import LogoPlaceholder from "../../../assets/icon-logo.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -60,6 +60,7 @@ const CardTrending = ({ trending }) => {
   };
 
   const link = "https://image.tmdb.org/t/p/original/";
+
   return (
     <div className="container">
       <h2
@@ -82,7 +83,7 @@ const CardTrending = ({ trending }) => {
               className="cards w-full h-full  bg-gray-800"
               alt="poster-movie"
               effect="blur"
-              placeholderSrc={link.concat(movie.poster_path)}
+              placeholderSrc={LogoPlaceholder}
               onClick={() => {
                 toNavigate(movie.id);
                 dispatchDetail(movie.id);
