@@ -38,9 +38,7 @@ const Home = () => {
   }, [post, posts.length]);
 
   const loadMore = (e) => {
-    // e.preventDefault();
     setPage((page += 1));
-    // setDataLength((length += length));
     setPosts(() => [...posts, ...post]);
   };
 
